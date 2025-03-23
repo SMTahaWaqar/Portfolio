@@ -1,3 +1,6 @@
+## Deployed Development URL
+http://ec2-3-1-205-149.ap-southeast-1.compute.amazonaws.com:3000/
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
