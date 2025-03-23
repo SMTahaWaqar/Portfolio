@@ -1,0 +1,30 @@
+name: Deploy Next.js application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      - name: Build docker image
+        run: docker build -t tahadeadpoolxd/developer-portfolio .
+      - name: Login to docker hub
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: Publish image to docker hub
+        run: docker push tahadeadpoolxd/developer-portfolio:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull tahadeadpoolxd/developer-portfolio:latest
+      - name: Delete old container
+        run: docker rm -f developer-portfolio-app-container
+      - name: Run docker container
+        run: docker run -d -p 3000:3000 --name developer-portfolio-app-container tahadeadpoolxd/developer-portfolio
