@@ -135,3 +135,22 @@ export const hobbies = [
   { title: "Fitness", emoji: "🥗", left: "5%", top: "65%" },
   { title: "Reading", emoji: "📚", left: "45%", top: "70%" },
 ];
+
+export const footerLinks = [
+  {
+    title: "Youtube",
+    href: "#",
+  },
+  {
+    title: "X",
+    href: "#",
+  },
+  {
+    title: "Instagram",
+    href: "#",
+  },
+  {
+    title: "LinkedIn",
+    href: "#",
+  },
+];
